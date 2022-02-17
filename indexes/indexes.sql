@@ -48,3 +48,16 @@ ALTER TABLE TABLE_NAME DROP CONSTRAINT PK_COLUMN_NAME;
 SELECT  'DROP INDEX [' + ix.name + '] ON ' + OBJECT_NAME(ID) + '; '
 FROM  sysindexes ix
 WHERE   ix.Name IS NOT null and ix.Name like '%PU_alumnos_riesgo_%'
+
+
+-- ALUMNO DATOS
+IF NOT EXISTS(SELECT * FROM sys.indexes WHERE Name = 'IX_alumno_datos_IX03' AND object_id = OBJECT_ID('alumno_datos'))
+BEGIN 
+	CREATE NONCLUSTERED INDEX IX_alumno_datos_IX03 ON [dbo].[alumno_datos] ([s_alu_dni],[s_alu_codigo]);
+END
+
+-- LOE_TIPO_ESTUDIANTE
+IF NOT EXISTS(SELECT * FROM sys.indexes WHERE Name = 'CLIX_LOE_TIPO_ESTUDIANTE' AND object_id = OBJECT_ID('LOE_TIPO_ESTUDIANTE'))
+BEGIN 
+	CREATE CLUSTERED INDEX CLIX_LOE_TIPO_ESTUDIANTE ON LOE_TIPO_ESTUDIANTE (SPRIDEN_ID);
+END
