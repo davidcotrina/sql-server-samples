@@ -11,6 +11,12 @@ USING <table_origen> [AS SOURCE]
 [WHEN NOT MATCHED BY SOURCE THEN 
     <accion cuando no coinciden por origen> ];
 
+WHEN MATCHED THEN
+WHEN NOT MATCHED BY TARGET THEN
+	--Los registros del SOURCE que NO están en el TARGET.
+WHEN NOT MATCHED BY SOURCE THEN
+	--Los registros del TARGET que NO están en el SOURCE.
+
 
 -- EJM
 MERGE STG_facultad AS T   

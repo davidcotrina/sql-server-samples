@@ -1,3 +1,13 @@
+--Storage size
+--6 bytes for precisions less than 3.
+--7 bytes for precisions 3 and 4.
+--All other precisions require 8 bytes.
+
+--DATETIME2		- 8bytes // 2022-04-04 11:37:46.5795787
+--DATETIME2(3)	- 7bytes // 2022-04-04 11:37:46.580
+--DATETIME2(0)	- 6bytes // 2022-04-04 11:37:47 
+
+
 CREATE TABLE ae (
 	_datetime datetime,
 	_datetime2 datetime2,
